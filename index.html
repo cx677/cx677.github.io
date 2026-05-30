@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CET-4 Quest — A data-driven English learning app with spaced repetition algorithm, learning analytics dashboard, and gamification. Built with vanilla HTML/CSS/JS.">
+<meta name="keywords" content="CET-4, English learning, spaced repetition, Ebbinghaus, learning analytics, gamification" >
+<meta property="og:title" content="四级闯关 · CET-4 Quest">
+<meta property="og:description" content="Data-driven English learning with spaced repetition & analytics">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
 <title>四级闯关 · CET-4 Quest</title>
 <style>
 /* ============================================================
@@ -1445,6 +1451,12 @@ input, textarea, select { font-family: inherit; }
       </div>
     </section>
 
+      <div class="card" style="margin-top:16px;">
+        <h4>📦 学习数据导出</h4>
+        <p style="font-size:13px;color:var(--text-muted);margin:4px 0 12px;">导出完整学习记录（词汇掌握度、学习时长、错题统计），可用于数据分析</p>
+        <button class="btn btn-secondary" onclick="exportLearningData()" style="font-size:13px;">📥 导出 JSON</button>
+      </div>
+
     <!-- ========== VOCAB ========== -->
     <section class="section" id="section-vocab">
       <div class="card">
@@ -2327,6 +2339,28 @@ function showToast(msg) {
 }
 
 // ==================== INIT ====================
+
+// ==================== DATA EXPORT ====================
+function exportLearningData() {
+  const data = {
+    exportedAt: new Date().toISOString(),
+    vocab: getVocabState(),
+    streak: { current: State.streak.current, lastStudyDate: State.streak.lastStudyDate },
+    tasks: State.tasks,
+    achievements: State.achievements,
+    activityLog: State.activityLog || [],
+    version: "2.0"
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "cet4-learning-data-" + new Date().toISOString().slice(0,10) + ".json";
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("📥 学习数据已导出！");
+}
+
 function init() {
   refreshDashboard();
   refreshSidebarBadges();
