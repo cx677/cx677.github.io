@@ -1,26 +1,11 @@
 # CET-4 Quest · 四级闯关
 
-> **A data-driven English learning SPA with spaced repetition, learning analytics, and gamification.**
-> Built as a demonstration of product thinking, UX engineering, and learning algorithm design.
+> **A gamified CET-4 English learning app with spaced repetition, learning analytics, and data export.**
+> 5,200 lines of vanilla HTML/CSS/JS. No frameworks, no dependencies.
 
 [![Deployed](https://img.shields.io/badge/deployed-GitHub%20Pages-brightgreen)](https://cx677.github.io)
 [![Lines](https://img.shields.io/badge/code-5200%2B%20lines-blue)](index.html)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-
----
-
-## Why This Matters (for 东方国信 Interview)
-
-This project demonstrates capabilities directly relevant to AI product development:
-
-| Competency | Evidence |
-|-----------|----------|
-| **Product Thinking** | Complete learning product from UX design to algorithm to analytics — not just a tech demo |
-| **Data-Driven Design** | Learning dashboard with radar charts, weekly trends, activity snapshots |
-| **Algorithm Implementation** | Ebbinghaus spaced repetition (forgetting curve), adaptive quiz difficulty |
-| **UX Engineering** | Dark/light theme system, keyboard shortcuts, onboarding wizard, responsive layout |
-| **State Architecture** | Centralized state management with localStorage persistence |
-| **User Psychology** | Streak tracking, achievement badges, combo system — designed for retention |
 
 ---
 
@@ -116,22 +101,6 @@ open index.html
 ```
 
 No `npm install`. No build step. No server needed. This was a conscious engineering decision — the app works entirely client-side with localStorage persistence.
-
----
-
-## For Interview: Key Talking Points
-
-**1. "Why did you build this?"**
-> "I wanted to understand what makes learning apps sticky. The spaced repetition algorithm, the streak system, the achievement badges — each feature is a hypothesis about user motivation. I built it to test those hypotheses, not just to write code."
-
-**2. "What was the hardest part?"**
-> "The Ebbinghaus algorithm. It's not just 'review after N days' — you need to handle partial mastery, adjust intervals based on performance, and maintain the review queue across sessions. The data model had to be both correct and space-efficient since everything lives in localStorage."
-
-**3. "What would you do differently?"**
-> "I'd add an AI-powered writing coach using an LLM API. The 'AI练笔' module is currently static — the next iteration would have real-time essay feedback. This is exactly the kind of 'AI+行业' application 东方国信 specializes in."
-
-**4. "How does this relate to big data?"**
-> "Every user interaction generates data — word difficulty, time spent, error patterns. The dashboard shows real-time analytics. At scale, this data could drive adaptive curriculum design, which requires the kind of data pipeline and analytics platform 东方国信 builds."
 
 ---
 
